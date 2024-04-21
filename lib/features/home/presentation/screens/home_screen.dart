@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
 import 'package:fruit_animations_app/core/res/assets_manager.dart';
@@ -50,26 +51,35 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: paddingMargin),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CategoriesBuild(categories: categories),
-              16.verticalSpace,
-              SearchBarFiltering(),
-              16.verticalSpace,
-              GridView.builder(
-                itemCount: products.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 10.h,
-                  crossAxisSpacing: 10.w,
-                  mainAxisExtent: 250.h,
-                    crossAxisCount: 2),
-                itemBuilder: (context, index) => ProductCard(productModel: products[index],category: categories.singleWhere((element) => element.name == products[index].name),),
-              )
-            ],
-          ),
+          child: AnimationLimiter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: AnimationConfiguration.toStaggeredList(childAnimationBuilder:     (widget) => SlideAnimation(
+                duration: Duration(milliseconds: 300),
+                horizontalOffset: 50.0,
+                child: FadeInAnimation(
+                  
+                  child: widget,
+                ),
+              ), children:  [
+                CategoriesBuild(categories: categories),
+                16.verticalSpace,
+                SearchBarFiltering(),
+                16.verticalSpace,
+                GridView.builder(
+                  itemCount: products.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 10.h,
+                    crossAxisSpacing: 10.w,
+                    mainAxisExtent: 250.h,
+                      crossAxisCount: 2),
+                  itemBuilder: (context, index) => ProductCard(productModel: products[index],category: categories.singleWhere((element) => element.name == products[index].name),),
+                )
+              ],
+            ),
+          )),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
