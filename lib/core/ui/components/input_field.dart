@@ -110,7 +110,7 @@ class _InputFieldState extends State<InputField> {
       onFieldSubmitted: widget.onFieldSubmitted,
       decoration: InputDecoration(
         labelStyle: TextStyle(color: AppColors.onBgTextColor.withOpacity(.6)),
-        labelText: widget.label,
+        hintText: widget.label,
         suffixIcon: _isPassword
             ? IconButton(
                 onPressed: () => setState(() => _obscureText = !_obscureText),

@@ -7,6 +7,12 @@ import 'package:fruit_animations_app/config/router/app_router.gr.dart';
 class AppRouter extends $AppRouter{
   @override
 
-  List<AutoRoute> get routes =>[];
+  List<AutoRoute> get routes =>[
+    AutoRoute(page: HomeRoute.page,initial: false),
+    AutoRoute(page: SplashRoute.page,initial: false),
+    AutoRoute(page: LoginRoute.page,initial: true),
+    AutoRoute(page: RegisterRoute.page,initial: false),
+
+  ];
 
 }

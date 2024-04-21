@@ -11,7 +11,8 @@ final appRouter = AppRouter();
   Widget build(BuildContext context) {
     return  DI(app: ScreenUtilInit(
       designSize: const Size(375, 812),
-      child: MaterialApp.router(
+      splitScreenMode: false,
+      builder:(context, child) =>  MaterialApp.router(
         routerConfig: appRouter.config(),
       
       
