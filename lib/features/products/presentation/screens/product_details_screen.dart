@@ -1,19 +1,15 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
-import 'package:fruit_animations_app/core/res/assets_manager.dart';
 import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
 import 'package:fruit_animations_app/core/utils/values.dart';
-import 'package:fruit_animations_app/features/products/data/models/product_model.dart';
+import 'package:fruit_animations_app/features/products/domain/entities/product.dart';
 
 @RoutePage()
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key, required this.productModel});
-  final ProductModel productModel;
+  const ProductDetailsScreen({super.key, required this.product});
+  final Product product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +23,9 @@ class ProductDetailsScreen extends StatelessWidget {
                     constraints:
                         const BoxConstraints(minWidth: double.infinity),
                     child: Hero(
-                      tag: productModel.id,
+                      tag: product.id,
                       child: Image.asset(
-                      productModel.image,
+                      product.image,
                         height: 220.h,
                         fit: BoxFit.cover,
                       ),
@@ -38,17 +34,17 @@ class ProductDetailsScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       horizontal: paddingMargin, vertical: 20.h),
                   child: IconButton.filled(
-                    style: ButtonStyle(backgroundColor:MaterialStatePropertyAll( AppColors.backgroundColor)),
+                    style: const ButtonStyle(backgroundColor:const MaterialStatePropertyAll( AppColors.backgroundColor)),
                       onPressed: () {
                         context.back();
-                      }, icon: Icon(Icons.arrow_back_ios_new,color: AppColors.primaryColor,)),
+                      }, icon: const Icon(Icons.arrow_back_ios_new,color: AppColors.primaryColor,)),
                 ),
               ],
             ),
             Column(
               children: [
                 190.verticalSpace,
-                ProductDetailsBuild(productModel: productModel)
+                ProductDetailsBuild(product: product)
               ],
             )
           ],
@@ -63,7 +59,7 @@ class ProductDetailsScreen extends StatelessWidget {
         ),
         child: FilledButton(
             onPressed: () {},
-            child: CustomText(
+            child: const CustomText(
               "Add to cart",
               color: AppColors.onPrimaryColor,
             )),
@@ -75,10 +71,10 @@ class ProductDetailsScreen extends StatelessWidget {
 class ProductDetailsBuild extends StatelessWidget {
   const ProductDetailsBuild({
     super.key,
-    required this.productModel,
+    required this.product,
   });
 
-  final ProductModel productModel;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +91,7 @@ class ProductDetailsBuild extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           CustomText(
-            productModel.name,
+            product.name,
             fontSize: 32.sp,
             fontWeight: FontWeight.w600,
           ),
@@ -105,12 +101,12 @@ class ProductDetailsBuild extends StatelessWidget {
             fontSize: 18.sp,
           ),
           16.verticalSpace,
-          ActionsSection(),
+          const ActionsSection(),
           12.verticalSpace,
-          Divider(),
+          const Divider(),
           16.verticalSpace,
           CustomText(
-            "Oranges are round orange-coloured fruit that grow on a tree which can reach 10 metres (33 ft) high. Orange trees have dark green shiny leaves and small white flowers with five petals. The flowers smell very sweet which attracts many bees. An orange has a tough shiny orange skin.",
+            product.description
           )
         ],
       ),
@@ -133,7 +129,7 @@ class ActionsSection extends StatelessWidget {
             IconButton.outlined(
                 color: AppColors.onBgTextColor,
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.add,
                   color: AppColors.onBgTextColor,
                 )),
@@ -145,7 +141,7 @@ class ActionsSection extends StatelessWidget {
             ),
             4.horizontalSpace,
             IconButton.outlined(
-                onPressed: () {}, icon: Icon(Icons.remove))
+                onPressed: () {}, icon: const Icon(Icons.remove))
           ],
         ),
         IconButton.filled(
@@ -154,7 +150,7 @@ class ActionsSection extends StatelessWidget {
                 backgroundColor: MaterialStatePropertyAll(
                     AppColors.onBgTextColor.withOpacity(.1))),
             onPressed: () {},
-            icon: Icon(Icons.favorite_border_outlined))
+            icon: const Icon(Icons.favorite_border_outlined))
       ],
     );
   }
