@@ -36,7 +36,8 @@ class CartRepoImpl implements CartRepo {
       return Left(l);
     }, (r) {
       final List<DemandModel> items =
-        List<DemandModel> .from(r.map((itemJson) => DemandModel.fromJson(r)));
+        List<DemandModel> .from(r.map((itemJson) => DemandModel.fromJson(itemJson)));
+        log("I'm from repo impl and this is the result i get $r");
       return Right(items);
     });
   }

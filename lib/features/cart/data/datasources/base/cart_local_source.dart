@@ -14,7 +14,6 @@ class CartLocalSource extends CartDataSource{
 
     String key = DateTime.now().millisecondsSinceEpoch.toString();
     itemJsonData['id'] = key ;
-    log(itemJsonData.toString());
     db.put(key, itemJsonData);
 
     return const Right(null);   

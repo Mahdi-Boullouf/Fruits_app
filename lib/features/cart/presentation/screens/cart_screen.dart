@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,6 +13,7 @@ import 'package:fruit_animations_app/core/res/app_colors.dart';
 import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
 import 'package:fruit_animations_app/core/ui/components/shimmer_widget.dart';
 import 'package:fruit_animations_app/core/utils/values.dart';
+import 'package:fruit_animations_app/features/cart/data/models/demand_model.dart';
 import 'package:fruit_animations_app/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:fruit_animations_app/features/cart/presentation/widgets/cart_item_card.dart';
 import 'package:fruit_animations_app/features/home/presentation/widgets/custom_bottom_nav_bar.dart';
@@ -67,6 +70,10 @@ class _CartScreenState extends State<CartScreen> {
                 BlocBuilder<CartCubit, CartState>(
                   builder: (context, state) {
                     if (state is CartItemsLoaded) {
+                     for (var i in state.demands){
+print((i as DemandModel).toJson);
+print(i.id!);
+                     }
                       return ListView.builder(
                         itemCount: state.demands.length,
                         itemBuilder: (context, index) => BlocProvider(

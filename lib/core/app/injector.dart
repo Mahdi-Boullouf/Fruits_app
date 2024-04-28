@@ -1,6 +1,6 @@
 import 'package:fruit_animations_app/features/cart/data/datasources/base/cart_local_source.dart';
 import 'package:fruit_animations_app/features/cart/data/repositories/cart_repo_impl.dart';
-import 'package:fruit_animations_app/features/cart/domain/usecases/cart_item_added.dart';
+import 'package:fruit_animations_app/features/cart/domain/usecases/add_cart_item.dart';
 import 'package:fruit_animations_app/features/cart/domain/usecases/delete_cart_item.dart';
 import 'package:fruit_animations_app/features/cart/domain/usecases/get_user_cart_items.dart';
 import 'package:fruit_animations_app/features/cart/presentation/cubit/cart_cubit.dart';

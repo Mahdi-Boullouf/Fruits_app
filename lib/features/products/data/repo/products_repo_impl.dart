@@ -54,7 +54,6 @@ class ProductsRepoImpl extends ProductsRepo{
     // TODO: implement getProduct
    try {
 
-  log("repo func started");
     final responseData = await productsDataSource.getProduct(id);
     // log(responseData);
     final product = ProductModel.fromJson(responseData);

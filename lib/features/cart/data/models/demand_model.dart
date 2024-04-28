@@ -1,11 +1,11 @@
 
+
 import 'package:fruit_animations_app/features/cart/domain/entities/demand.dart';
 
 class DemandModel extends Demand {
   DemandModel(
       {super.userId, super.id, super.price, super.productId, super.quantity});
   factory DemandModel.fromJson(dynamic json) {
-json = json[0];
   return  DemandModel(
       userId: json['user_id'],
       price:json['price'] ,

@@ -10,9 +10,7 @@ class GetProduct{
 
   GetProduct({required this.productsRepo});
   Future<Either<Failure,Product>> call(String id) async {
-    log("use case function started");
     final product = await productsRepo.getProduct(id);
-    log("use case function got $product");
     
     return product;
   }

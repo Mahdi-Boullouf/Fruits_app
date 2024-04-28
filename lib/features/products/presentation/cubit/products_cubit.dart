@@ -18,7 +18,6 @@ class ProductsCubit extends Cubit<ProductsState> {
   final GetProductsByCategoryUseCase getProductsByCategoryUseCase;
   final GetProduct getProduct;
   getProducts({String? category}) async {
-    log("start");
     emit(ProductsLoading());
     late final Either<Failure, List<Product>> products;
     if(category == null || category == "All"){
@@ -27,15 +26,12 @@ class ProductsCubit extends Cubit<ProductsState> {
     }else{
       products = await getProductsByCategoryUseCase(category);
     }
-    log(products.toString());
     products.fold((error) => emit(ProductsError(message: error.message)), (products) => emit (ProductsLoaded(products: products)));
   }
 
   getSingleProduct(String productId) async {
-    log("started function");
     emit(ProductsLoading());
     final result =await getProduct(productId);
-    log("result got ${result}");
     result.fold((failure)=>emit(ProductsError(message: failure.message)), (product) => emit(ProductLoaded(product: product)));
     }
 

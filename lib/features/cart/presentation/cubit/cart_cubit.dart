@@ -1,8 +1,11 @@
+
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fruit_animations_app/features/cart/data/models/demand_model.dart';
 import 'package:fruit_animations_app/features/cart/domain/entities/demand.dart';
-import 'package:fruit_animations_app/features/cart/domain/usecases/cart_item_added.dart';
+import 'package:fruit_animations_app/features/cart/domain/usecases/add_cart_item.dart';
 import 'package:fruit_animations_app/features/cart/domain/usecases/delete_cart_item.dart';
 import 'package:fruit_animations_app/features/cart/domain/usecases/get_user_cart_items.dart';
 import 'package:fruit_animations_app/features/products/domain/usecases/get_product.dart';

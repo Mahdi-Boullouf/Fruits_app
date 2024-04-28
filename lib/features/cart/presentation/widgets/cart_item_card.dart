@@ -24,7 +24,7 @@ class _CartItemCardState extends State<CartItemCard> {
   void initState() {
     // TODO: implement initState
     super.initState();
-  
+    log('they pass me ${widget.demand.productId}');
     context.read<ProductsCubit>().getSingleProduct(widget.demand.productId!);
   }
 
@@ -33,7 +33,6 @@ class _CartItemCardState extends State<CartItemCard> {
     return BlocBuilder<ProductsCubit, ProductsState>(
 
       builder: (context, state) {
-    log(state.toString());
         if(state is ProductLoaded){
   return ListTile(
           leading: ClipRRect(

@@ -75,10 +75,8 @@ class ProductsLocalDataSource implements ProductsDataSource {
   @override
   Future getProduct(String id) async {
     // TODO: implement getProduct
-    log("data source func started on id $id");
         var mockFiltredResponseFromServert = Map<String,dynamic>.from(  _mockData.singleWhere((element) => element['id'] == id));
         print("hmm -> ${mockFiltredResponseFromServert}");
-    log("data source func got $mockFiltredResponseFromServert");
 
  await Future.delayed(const Duration(seconds: 1));
  return mockFiltredResponseFromServert;

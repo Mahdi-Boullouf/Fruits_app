@@ -78,7 +78,6 @@ class ProductDetailsScreen extends StatelessWidget {
           
                 final int quantity =
                     context.read<ProudctQuantityCounterCubit>().getQuantity;
-          
                 context
                     .read<CartCubit>()
                     .addItem(productId: product.id, quantity: quantity);
