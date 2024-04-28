@@ -12,6 +12,7 @@ final appRouter = AppRouter();
     return  DI(app: ScreenUtilInit(
       designSize: const Size(375, 812),
       splitScreenMode: false,
+      minTextAdapt: true,
       builder:(context, child) =>  MaterialApp.router(
         routerConfig: appRouter.config(),
       

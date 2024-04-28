@@ -67,7 +67,7 @@ class ProductCard extends StatelessWidget {
               ),
               8.verticalSpace,
               CustomText(
-                "RM 10.00 / per pkg",
+                "\$ ${product.price} / per pkg",
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
                 textAlign: TextAlign.center,
@@ -120,13 +120,7 @@ return Container(
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset(
-                //  category.image,
-                '',
-                width: 24.w,
-
-                color: Colors.white,
-              ),
+            
               4.horizontalSpace,
               CustomText(
                 product.category,

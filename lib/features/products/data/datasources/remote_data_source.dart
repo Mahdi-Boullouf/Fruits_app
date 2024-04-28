@@ -19,4 +19,10 @@ class ProductsRemoteDataSource extends ProductsDataSource{
     throw UnimplementedError();
   }
   
+  @override
+  Future getProduct(String id) {
+    // TODO: implement getProduct
+    throw UnimplementedError();
+  }
+  
 }

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
-import 'package:fruit_animations_app/core/res/assets_manager.dart';
 import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
 
 import '../../domain/entities/category.dart';
@@ -20,7 +19,7 @@ class CategoryCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-        SvgPicture.asset(category.image),
+        SvgPicture.asset(category.image,colorFilter:  ColorFilter.mode(isSelected ? AppColors.onPrimaryColor : AppColors.onBgTextColor, BlendMode.srcIn) ,),
         CustomText(category.name,fontSize: 12.sp,color: isSelected ? AppColors.onPrimaryColor : AppColors.onBgTextColor,)
       ],),
     );

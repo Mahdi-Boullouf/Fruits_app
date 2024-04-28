@@ -9,7 +9,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
-import 'package:flutter/cupertino.dart' as _i11;
 import 'package:flutter/material.dart' as _i10;
 import 'package:fruit_animations_app/features/auth/presentation/screens/login_screen.dart'
     as _i5;
@@ -23,8 +22,8 @@ import 'package:fruit_animations_app/features/dashboard/presentation/screens/das
     as _i3;
 import 'package:fruit_animations_app/features/home/presentation/screens/home_screen.dart'
     as _i4;
-import 'package:fruit_animations_app/features/products/data/models/product_model.dart'
-    as _i12;
+import 'package:fruit_animations_app/features/products/domain/entities/product.dart'
+    as _i11;
 import 'package:fruit_animations_app/features/products/presentation/screens/product_details_screen.dart'
     as _i6;
 import 'package:fruit_animations_app/features/splash/presentation/screens/splash_screen.dart'
@@ -48,11 +47,9 @@ abstract class $AppRouter extends _i9.RootStackRouter {
       );
     },
     DashboardRoute.name: (routeData) {
-      final args = routeData.argsAs<DashboardRouteArgs>(
-          orElse: () => const DashboardRouteArgs());
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.DashboardScreen(key: args.key),
+        child: const _i3.DashboardScreen(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -73,7 +70,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
         routeData: routeData,
         child: _i6.ProductDetailsScreen(
           key: args.key,
-          productModel: args.productModel,
+          product: args.product,
         ),
       );
     },
@@ -122,31 +119,16 @@ class CheckoutRoute extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.DashboardScreen]
-class DashboardRoute extends _i9.PageRouteInfo<DashboardRouteArgs> {
-  DashboardRoute({
-    _i10.Key? key,
-    List<_i9.PageRouteInfo>? children,
-  }) : super(
+class DashboardRoute extends _i9.PageRouteInfo<void> {
+  const DashboardRoute({List<_i9.PageRouteInfo>? children})
+      : super(
           DashboardRoute.name,
-          args: DashboardRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'DashboardRoute';
 
-  static const _i9.PageInfo<DashboardRouteArgs> page =
-      _i9.PageInfo<DashboardRouteArgs>(name);
-}
-
-class DashboardRouteArgs {
-  const DashboardRouteArgs({this.key});
-
-  final _i10.Key? key;
-
-  @override
-  String toString() {
-    return 'DashboardRouteArgs{key: $key}';
-  }
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
 
 /// generated route for
@@ -181,14 +163,14 @@ class LoginRoute extends _i9.PageRouteInfo<void> {
 /// [_i6.ProductDetailsScreen]
 class ProductDetailsRoute extends _i9.PageRouteInfo<ProductDetailsRouteArgs> {
   ProductDetailsRoute({
-    _i11.Key? key,
-    required _i12.ProductModel productModel,
+    _i10.Key? key,
+    required _i11.Product product,
     List<_i9.PageRouteInfo>? children,
   }) : super(
           ProductDetailsRoute.name,
           args: ProductDetailsRouteArgs(
             key: key,
-            productModel: productModel,
+            product: product,
           ),
           initialChildren: children,
         );
@@ -202,16 +184,16 @@ class ProductDetailsRoute extends _i9.PageRouteInfo<ProductDetailsRouteArgs> {
 class ProductDetailsRouteArgs {
   const ProductDetailsRouteArgs({
     this.key,
-    required this.productModel,
+    required this.product,
   });
 
-  final _i11.Key? key;
+  final _i10.Key? key;
 
-  final _i12.ProductModel productModel;
+  final _i11.Product product;
 
   @override
   String toString() {
-    return 'ProductDetailsRouteArgs{key: $key, productModel: $productModel}';
+    return 'ProductDetailsRouteArgs{key: $key, product: $product}';
   }
 }
 

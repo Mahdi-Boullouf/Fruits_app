@@ -1,3 +1,6 @@
+
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruit_animations_app/core/error/failure.dart';
 import 'package:fruit_animations_app/features/products/data/datasources/base/data_source.dart';
@@ -42,6 +45,21 @@ class ProductsRepoImpl extends ProductsRepo{
     final productsModels = responseData.map((e) => ProductModel.fromJson(e)).toList();
     return Right(productsModels);
   } on Failure catch (e) {
+    return Left(e);
+  }
+  }
+  
+  @override
+  Future<Either<Failure, Product>> getProduct(String id) async {
+    // TODO: implement getProduct
+   try {
+
+  log("repo func started");
+    final responseData = await productsDataSource.getProduct(id);
+    // log(responseData);
+    final product = ProductModel.fromJson(responseData);
+    return Right(product);
+      } on Failure catch (e) {
     return Left(e);
   }
   }
