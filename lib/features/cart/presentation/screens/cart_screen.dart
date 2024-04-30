@@ -70,10 +70,9 @@ class _CartScreenState extends State<CartScreen> {
                 BlocBuilder<CartCubit, CartState>(
                   builder: (context, state) {
                     if (state is CartItemsLoaded) {
-                     for (var i in state.demands){
-print((i as DemandModel).toJson);
-print(i.id!);
-                     }
+                  if(state.demands.isEmpty){
+                    return CustomText("You didn't add any demands");
+                  }
                       return ListView.builder(
                         itemCount: state.demands.length,
                         itemBuilder: (context, index) => BlocProvider(
@@ -101,70 +100,84 @@ print(i.id!);
           )),
         ),
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.only(
-          left: paddingMargin,
-          right: paddingMargin,
-          top: 8.h,
-          bottom: 4.h,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      bottomNavigationBar: BlocBuilder<CartCubit, CartState>(
+        builder: (context, state) {
+          if(state is CartItemsLoaded){
+      
+return Container(
+            color: AppColors.backgroundColor,
+            padding: EdgeInsets.only(
+              left: paddingMargin,
+              right: paddingMargin,
+              top: 8.h,
+              bottom: 4.h,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                CustomText(
-                  "Subtotal : ",
-                  fontWeight: FontWeight.w600,
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const CustomText(
+                      "Subtotal : ",
+                      fontWeight: FontWeight.w600,
+                    ),
+                    CustomText(
+                      "\$${state.subTotal}",
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ],
                 ),
-                CustomText(
-                  "\$34",
-                  fontWeight: FontWeight.w600,
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const CustomText(
+                      "Tax : ",
+                      fontWeight: FontWeight.w600,
+                    ),
+                    CustomText(
+                                         "\$${ state.tax}",
+
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ],
                 ),
+                4.verticalSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(
+                      "Grande Total : ",
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    CustomText(
+                          "\$${state.subTotal + state.tax} ",
+
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18.sp,
+                    ),
+                  ],
+                ),
+                16.verticalSpace,
+                FilledButton(
+                  style:state.demands.isEmpty? ButtonStyle(backgroundColor: MaterialStatePropertyAll(AppColors.primaryColor.withOpacity(.5))) : null,
+                    onPressed: state.demands.isEmpty? null :  () {
+                      context.read<CartCubit>().checkoutUserItems();
+                      context.router.push(const CheckoutRoute());
+                    },
+                    child: const CustomText(
+                      "Checkout",
+                      color: AppColors.onPrimaryColor,
+                    )),
               ],
             ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomText(
-                  "Tax : ",
-                  fontWeight: FontWeight.w600,
-                ),
-                CustomText(
-                  "\$5",
-                  fontWeight: FontWeight.w600,
-                ),
-              ],
-            ),
-            4.verticalSpace,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomText(
-                  "Grande Total : ",
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-                CustomText(
-                  "\$39",
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18.sp,
-                ),
-              ],
-            ),
-            16.verticalSpace,
-            FilledButton(
-                onPressed: () {
-                  context.router.push(const CheckoutRoute());
-                },
-                child: const CustomText(
-                  "Checkout",
-                  color: AppColors.onPrimaryColor,
-                )),
-          ],
-        ),
+          );
+          }
+          return const SizedBox();
+          
+        },
       ),
     );
   }

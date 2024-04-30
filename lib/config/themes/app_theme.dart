@@ -13,7 +13,9 @@ ThemeData appTheme() {
           filled: true,
           fillColor: AppColors.onBgTextColor.withOpacity(.1)),
       filledButtonTheme: FilledButtonThemeData(
+        
           style: ButtonStyle(
+          
             padding: MaterialStatePropertyAll( EdgeInsets.symmetric(vertical: 16.h)),
               backgroundColor:
                   const MaterialStatePropertyAll(AppColors.primaryColor),

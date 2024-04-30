@@ -72,21 +72,30 @@ class ProductDetailsScreen extends StatelessWidget {
             top: 8.h,
             bottom: 24.h,
           ),
-          child: FilledButton(
-              onPressed: () {
-                log("ADded");
-          
-                final int quantity =
-                    context.read<ProudctQuantityCounterCubit>().getQuantity;
-                context
-                    .read<CartCubit>()
-                    .addItem(productId: product.id, quantity: quantity);
-                    context.read<CartCubit>().getCartUserItems("mahdi");
-              },
-              child: const CustomText(
-                "Add to cart",
-                color: AppColors.onPrimaryColor,
-              )),
+          child: BlocConsumer<CartCubit, CartState>(
+            listener: (context, state) {
+              if(state is CartItemAdded){
+                context.read<CartCubit>().getCartUserItems('mahdi');
+              }
+            },
+            builder: (context, state) {
+              if(state is CartItemsLoading){
+                return FilledButton(onPressed: null, child: const CircularProgressIndicator());
+              }
+              return FilledButton(
+                  onPressed: () {
+                    final int quantity =
+                        context.read<ProudctQuantityCounterCubit>().getQuantity;
+                    context
+                        .read<CartCubit>()
+                        .addItem(productId: product.id, quantity: quantity);
+                  },
+                  child: const CustomText(
+                    "Add to cart",
+                    color: AppColors.onPrimaryColor,
+                  ));
+            },
+          ),
         ),
       ),
     );

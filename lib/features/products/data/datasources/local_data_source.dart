@@ -66,6 +66,7 @@ class ProductsLocalDataSource implements ProductsDataSource {
   @override
   Future getSearchedProducts(String query)async {
     // TODO: implement getSearchedProducts
+    log("searching");
         var mockFiltredResponseFromServert =  _mockData.where((element) => (element['name'] as String ).toLowerCase().contains(query.toLowerCase())).toList();
  await Future.delayed(const Duration(seconds: 1));
  return mockFiltredResponseFromServert;

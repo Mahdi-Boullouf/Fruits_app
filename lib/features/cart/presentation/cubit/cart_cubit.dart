@@ -6,6 +6,7 @@ import 'package:equatable/equatable.dart';
 import 'package:fruit_animations_app/features/cart/data/models/demand_model.dart';
 import 'package:fruit_animations_app/features/cart/domain/entities/demand.dart';
 import 'package:fruit_animations_app/features/cart/domain/usecases/add_cart_item.dart';
+import 'package:fruit_animations_app/features/cart/domain/usecases/checkout_items.dart';
 import 'package:fruit_animations_app/features/cart/domain/usecases/delete_cart_item.dart';
 import 'package:fruit_animations_app/features/cart/domain/usecases/get_user_cart_items.dart';
 import 'package:fruit_animations_app/features/products/domain/usecases/get_product.dart';
@@ -13,19 +14,32 @@ import 'package:fruit_animations_app/features/products/domain/usecases/get_produ
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
-  CartCubit( {required this.addCartItem,required this.deleteCartItem,required this.getCartItems,required this.getProduct,}) : super(CartInitial());
+  CartCubit( {required this.checkoutItems, required this.addCartItem,required this.deleteCartItem,required this.getCartItems,required this.getProduct,}) : super(CartInitial());
   final AddCartItem addCartItem;
   final DeleteCartItem deleteCartItem;
   final GetCartItems getCartItems;
   final GetProduct getProduct;
- 
+  final CheckoutItems checkoutItems; 
+
+
   getCartUserItems(String userId) async {
     emit(CartItemsLoading());
    final items = await  getCartItems(userId);
    items.fold((l) {
      emit(CartError(message: l.message));
    },(r){
-    emit(CartItemsLoaded(demands: r));
+    
+         double subTotal = 0 ; 
+            double tax = 5 ; // you could get it from backend based on your project usecase
+
+     for(var e in r){
+            subTotal = (e.price! * e.quantity!) +subTotal;
+            
+
+     }
+     subTotal =double.parse( subTotal.toStringAsFixed(2));
+
+    emit(CartItemsLoaded(demands: r, subTotal: subTotal, tax:r.isEmpty?0: tax));
 
    });
 
@@ -50,6 +64,16 @@ double totalPrice = r.price * quantity ;
     ff.fold((l) => emit(CartError(message: l.message)), (r) => emit(CartItemAdded()));
   });
     
+  }
+
+
+  checkoutUserItems() async {
+String userId = "mahdi";
+emit(CartItemsLoading());
+final checkoutResult =await checkoutItems(userId);
+checkoutResult.fold((l) => emit(CartError(message: l.message)), (r) => emit(CartItemCheckedOut()));
+getCartUserItems(userId);
+  
   }
 
   
