@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
 import 'package:fruit_animations_app/core/res/assets_manager.dart';
-import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
-import 'package:fruit_animations_app/core/ui/components/shimmer_widget.dart';
+import 'package:fruit_animations_app/core/ui/widgets/custom_text.dart';
+import 'package:fruit_animations_app/core/ui/widgets/shimmer_widget.dart';
 import 'package:fruit_animations_app/features/cart/domain/entities/demand.dart';
 import 'package:fruit_animations_app/features/products/presentation/cubit/products_cubit.dart';
 

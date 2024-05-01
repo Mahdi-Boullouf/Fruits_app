@@ -7,6 +7,8 @@ class AssetsManager{
   static const appleImage = 'assets/images/Apple.png';
   static const bananaImage = 'assets/images/Banana.png';
   static const orangeImage = 'assets/images/Orange.png';
+  static const avatar = 'assets/images/avatar.jpg';
+  static const noData = 'assets/images/no_data.svg';
   static const mangoImage = 'assets/images/Mango.png';
 
 

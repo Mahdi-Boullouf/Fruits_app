@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
 import 'package:fruit_animations_app/core/res/assets_manager.dart';
-import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
+import 'package:fruit_animations_app/core/ui/widgets/custom_text.dart';
 
 
 class NormalAppBar extends StatelessWidget {

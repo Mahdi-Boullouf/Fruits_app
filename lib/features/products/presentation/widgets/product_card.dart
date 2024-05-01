@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_animations_app/config/router/app_router.gr.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
-import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
+import 'package:fruit_animations_app/core/ui/widgets/custom_text.dart';
 import 'package:fruit_animations_app/features/home/data/models/category_model.dart';
 import 'package:fruit_animations_app/features/home/presentation/cubit/categories_cubit.dart';
 import 'package:fruit_animations_app/features/products/domain/entities/product.dart';
@@ -74,22 +74,7 @@ class ProductCard extends StatelessWidget {
               )
             ],
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              130.verticalSpace,
-              Align(
-                  alignment: Alignment.centerRight,
-                  child: CircleAvatar(
-                    radius: 26.r,
-                    backgroundColor: AppColors.primaryColor,
-                    child: const Icon(
-                      Icons.add_shopping_cart_outlined,
-                      color: AppColors.onPrimaryColor,
-                    ),
-                  ))
-            ],
-          ),
+         
         ],
       ),
     );

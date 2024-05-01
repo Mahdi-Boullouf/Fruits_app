@@ -26,23 +26,19 @@ List<TabItem> items = [
   Widget build(BuildContext context) {
     return   ClipRRect(
       borderRadius: BorderRadius.circular(36),
-      child: Padding(
-        padding: const EdgeInsets.all(18),
-        child: BottomBarCreative(
-        
-                  items: items,
-                  backgroundColor: AppColors.backgroundColor,
-                  color: AppColors.onBgTextColor,
-                  colorSelected: AppColors.primaryColor,
-                  indexSelected: context.tabsRouter.activeIndex,
-                  isFloating: true,
-                  highlightStyle: HighlightStyle(sizeLarge: true, isHexagon: true, elevation: 2),
-                  onTap: (int index){
-                    print(index);
-                    context.tabsRouter.setActiveIndex(index);
-                  },
-                ),
-      ),
+      child: BottomBarCreative(
+      
+                items: items,
+                backgroundColor: AppColors.backgroundColor,
+                color: AppColors.onBgTextColor,
+                colorSelected: AppColors.primaryColor,
+                indexSelected: context.tabsRouter.activeIndex,
+                isFloating: true,
+                highlightStyle: HighlightStyle(sizeLarge: true, isHexagon: true, elevation: 2),
+                onTap: (int index){
+                  context.tabsRouter.setActiveIndex(index);
+                },
+              ),
     );
   }
 }

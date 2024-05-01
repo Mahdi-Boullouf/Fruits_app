@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fruit_animations_app/core/ui/components/loading_widget.dart';
+import 'package:fruit_animations_app/core/ui/widgets/loading_widget.dart';
 import 'package:fruit_animations_app/features/products/presentation/cubit/products_cubit.dart';
 import 'package:fruit_animations_app/features/products/presentation/widgets/product_card.dart';
 

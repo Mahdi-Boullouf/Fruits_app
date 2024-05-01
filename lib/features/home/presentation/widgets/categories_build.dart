@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fruit_animations_app/core/ui/components/shimmer_widget.dart';
+import 'package:fruit_animations_app/core/ui/widgets/shimmer_widget.dart';
 import 'package:fruit_animations_app/features/home/presentation/cubit/categories_cubit.dart';
 import 'package:fruit_animations_app/features/home/presentation/cubit/products_filter_cubit.dart';
 import 'package:fruit_animations_app/features/home/presentation/widgets/category_card.dart';

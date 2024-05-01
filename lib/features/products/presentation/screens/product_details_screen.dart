@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_animations_app/core/app/injector.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
-import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
+import 'package:fruit_animations_app/core/ui/widgets/custom_text.dart';
 import 'package:fruit_animations_app/core/utils/values.dart';
 import 'package:fruit_animations_app/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:fruit_animations_app/features/products/domain/entities/product.dart';
@@ -80,7 +80,7 @@ class ProductDetailsScreen extends StatelessWidget {
             },
             builder: (context, state) {
               if(state is CartItemsLoading){
-                return FilledButton(onPressed: null, child: const CircularProgressIndicator());
+                return const FilledButton(onPressed: null, child: CircularProgressIndicator());
               }
               return FilledButton(
                   onPressed: () {

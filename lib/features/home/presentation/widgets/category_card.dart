@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
-import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
+import 'package:fruit_animations_app/core/ui/widgets/custom_text.dart';
 
 import '../../domain/entities/category.dart';
 

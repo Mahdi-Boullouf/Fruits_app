@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_animations_app/core/res/app_colors.dart';
-import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
+import 'package:fruit_animations_app/core/ui/widgets/custom_text.dart';
 import 'package:fruit_animations_app/features/home/domain/usecases/search_products.dart';
 import 'package:fruit_animations_app/features/home/presentation/cubit/products_search_cubit.dart';
 

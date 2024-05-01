@@ -20,7 +20,6 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  final List<Widget> tabs = [HomeScreen(),CartScreen()];
 @override
   void initState() {
     // TODO: implement initState

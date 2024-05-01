@@ -6,7 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_animations_app/config/router/app_router.gr.dart';
 import 'package:fruit_animations_app/core/res/assets_manager.dart';
-import 'package:fruit_animations_app/core/ui/components/custom_text.dart';
+import 'package:fruit_animations_app/core/ui/widgets/custom_text.dart';
 
 @RoutePage()
 class SplashScreen extends StatefulWidget {
